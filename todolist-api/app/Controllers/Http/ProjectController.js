@@ -24,14 +24,11 @@ class ProjectController {
     return project;
   }
 
-  async update({ params, request }) {
-    const project = await Project.find(params.id);
-    const { title } = request.all();
-    project = {
-      title,
-    };
-
-    await user.projects().save(project);
+  async update({ request }) {
+    const project = request.project;
+    project.merge(request.only("title"));
+    await project.save();
+    return project;
   }
 }
 

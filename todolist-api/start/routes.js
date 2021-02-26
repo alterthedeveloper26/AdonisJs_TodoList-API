@@ -15,10 +15,8 @@ Route.group(() => {
 Route.group(() => {
   Route.get("/", "ProjectController.index");
   Route.post("/store", "ProjectController.store");
-  Route.delete("/destroy/:id", "ProjectController.destroy").middleware([
-    "rightUser",
-  ]);
-  Route.patch("/update/:id", "ProjectController.update");
+  Route.delete("/:id", "ProjectController.destroy").middleware(["rightUser"]);
+  Route.patch("/:id", "ProjectController.update").middleware(["rightUser"]);
 })
   .prefix("api/project")
   .middleware(["auth:jwt"]);
