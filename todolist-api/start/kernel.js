@@ -38,6 +38,7 @@ const namedMiddleware = {
   auth: "Adonis/Middleware/Auth",
   guest: "Adonis/Middleware/AllowGuestOnly",
   rightUser: "App/Middleware/Authorization",
+  rightProject: "App/Middleware/TaskAuthorization",
 };
 
 /*

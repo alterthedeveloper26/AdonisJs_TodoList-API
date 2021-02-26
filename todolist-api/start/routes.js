@@ -20,3 +20,13 @@ Route.group(() => {
 })
   .prefix("api/project")
   .middleware(["auth:jwt"]);
+
+Route.group(() => {
+  Route.get("/:id", "TaskController.index").middleware(["rightUser"]);
+  Route.post("/:id/store/", "TaskController.store").middleware(["rightUser"]);
+  Route.delete("/:id", "TaskController.destroy").middleware(["rightProject"]);
+  Route.patch("/:id", "TaskController.update").middleware(["rightProject"]);
+  Route.get("/", "TaskController.");
+})
+  .prefix("api/task")
+  .middleware(["auth:jwt"]);
